@@ -7,13 +7,11 @@ public class Montant {
     private BigDecimal valeur;
     private final Devise devise;
 
+    public final static Montant ZERO_EURO = new Montant(BigDecimal.ZERO, Devise.EURO);
+
     public Montant(BigDecimal valeur, Devise devise) {
         this.valeur = valeur;
         this.devise = devise;
-    }
-
-    public static Montant zeroEuro() {
-        return new Montant(BigDecimal.ZERO, Devise.EURO);
     }
 
     @Override

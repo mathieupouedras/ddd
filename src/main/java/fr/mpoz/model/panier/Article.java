@@ -1,13 +1,18 @@
 package fr.mpoz.model.panier;
 
 import fr.mpoz.model.finance.Montant;
+import fr.mpoz.model.shared.SequenceGenerator;
 
 public class Article {
 
+    private final Integer id;
     private final String reference;
     private final Montant prix;
+    private SequenceGenerator sequenceGenerator;
 
-    public Article(String reference, Montant prix) {
+    public Article(String reference, Montant prix, SequenceGenerator sequenceGenerator) {
+        this.sequenceGenerator = sequenceGenerator;
+        this.id = sequenceGenerator.getValeurSuivante(this.getClass().getName());
         this.reference = reference;
         this.prix = prix;
     }
@@ -38,5 +43,13 @@ public class Article {
     @Override
     public int hashCode() {
         return reference.hashCode();
+    }
+
+    public String getReference() {
+        return this.reference;
+    }
+
+    public Integer getId() {
+        return this.id;
     }
 }

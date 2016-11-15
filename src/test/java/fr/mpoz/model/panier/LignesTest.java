@@ -1,5 +1,6 @@
 package fr.mpoz.model.panier;
 
+import fr.mpoz.infrastructure.SequenceGeneratorInMemory;
 import fr.mpoz.model.finance.Devise;
 import fr.mpoz.model.finance.Montant;
 import org.junit.Test;
@@ -14,8 +15,8 @@ public class LignesTest {
     @Test
     public void should_calcul_montant_total_de_1060_EUR() {
         // GIVEN
-        Article iphone = new Article("iphone", new Montant(new BigDecimal(500), Devise.EURO));
-        Article housse = new Article("housse", new Montant(new BigDecimal(30), Devise.EURO));
+        Article iphone = new Article("iphone", new Montant(new BigDecimal(500), Devise.EURO), new SequenceGeneratorInMemory());
+        Article housse = new Article("housse", new Montant(new BigDecimal(30), Devise.EURO), new SequenceGeneratorInMemory());
 
         Ligne ligneIphone = new Ligne(iphone, 2);
         Ligne ligneHousse = new Ligne(housse, 2);
